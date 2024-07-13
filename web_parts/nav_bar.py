@@ -27,15 +27,32 @@ class NavBar(BaseWebDriver):
 
     def get_logo_text(self):
         """
-        Retrieves and returns the logo text from the current webpage.
+        Retrieves and returns the logo text from the current navbar.
 
         Returns:
             str: The logo text if found, otherwise an empty string.
         """
         try:
-            # Use By.CSS_SELECTOR to match a tag with a specific class
             logo_element = self.driver.find_element(By.CSS_SELECTOR, 'h1.logo-name')
             return logo_element.text  # Retrieve the text of the element
+        except NoSuchElementException as e:
+            print(f"Element not found: {e}")
+            return ""
+        except WebDriverException as e:
+            print(f"Webdriver error occurred: {e}")
+            return ""
+
+    def get_home_text(self):
+        """
+        Retrieves and returns the home text from the current navbar.
+
+        Returns:
+            str: The home text if found, otherwise an empty string.
+        """
+        try:
+            menu_item_element = self.driver.find_element(By.XPATH,
+                                                         "//a[text()='Home']")
+            return menu_item_element.text
         except NoSuchElementException as e:
             print(f"Element not found: {e}")
             return ""

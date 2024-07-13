@@ -18,11 +18,16 @@ class TestNavBar(unittest.TestCase):
     def test_get_logo_text(self):
         """Test if the get_logo_text function retrieves the correct text."""
         expected_text = "Černopaščenko"  # Adjust this to the expected text
-        actual_text = self.page.get_logo_text
+        actual_text = self.page.get_logo_text()
         self.assertEqual(actual_text, expected_text, f"Expected logo text '{expected_text}'"
                                                      f" but got '{actual_text}'.")
 
-    
+    def test_get_home_text(self):
+        """Test if the get_home_text function retrieves the correct text."""
+        expected_text = "Home"
+        actual_text = self.page.get_home_text()
+        self.assertEqual(actual_text, expected_text, f"Expected home text '{expected_text}'"
+                                                     f" but got '{actual_text}'.")
 
     @classmethod
     def tearDownClass(cls):
