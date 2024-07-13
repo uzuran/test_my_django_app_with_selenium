@@ -15,6 +15,13 @@ class TestNavBar(unittest.TestCase):
         cls.driver_path = r'C:\drivers\chromedriver-win64\chromedriver.exe'
         cls.page = NavBar(cls.driver_path)
 
+    def test_get_title_text(self):
+        """Test if the get_title_text function retrieves the correct text."""
+        expected_title = "Černopaščenko"  # Adjust this to the expected text
+        actual_text = self.page.get_title_text()
+        self.assertEqual(actual_text, expected_title, f"Expected logo text '{expected_title}'"
+                                                      f" but got '{actual_text}'.")
+
     def test_get_logo_text(self):
         """Test if the get_logo_text function retrieves the correct text."""
         expected_text = "Černopaščenko"  # Adjust this to the expected text

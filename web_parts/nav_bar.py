@@ -25,6 +25,20 @@ class NavBar(BaseWebDriver):
         self.start_driver()
         self.driver.get("http://uzuran.pythonanywhere.com/")
 
+    def get_title_text(self):
+        """
+        :return: title from my webpage.
+        """
+        try:
+            get_title = self.driver.title
+            return get_title
+        except NoSuchElementException as e:
+            print(f"Element not found: {e}")
+            return ""
+        except WebDriverException as e:
+            print(f"Webdriver error occurred: {e}")
+            return ""
+
     def get_logo_text(self):
         """
         Retrieves and returns the logo text from the current navbar.

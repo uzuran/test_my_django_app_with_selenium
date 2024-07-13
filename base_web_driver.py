@@ -9,7 +9,7 @@ class BaseWebDriver:
 
     Attributes:
         driver_path (str): The path to the WebDriver executable.
-        driver (WebDriver): The WebDriver instance.
+        Driver (WebDriver): The WebDriver instance.
     """
 
     def __init__(self, driver_path):
