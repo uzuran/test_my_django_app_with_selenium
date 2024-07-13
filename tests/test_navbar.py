@@ -22,6 +22,8 @@ class TestNavBar(unittest.TestCase):
         self.assertEqual(actual_text, expected_text, f"Expected logo text '{expected_text}'"
                                                      f" but got '{actual_text}'.")
 
+    
+
     @classmethod
     def tearDownClass(cls):
         """Tear down the WebDriver after all tests."""

@@ -1,8 +1,6 @@
-# My main web page class.
-import time
-
+"""Class for get element from navbar web page"""
+from selenium.common import NoSuchElementException, WebDriverException
 from selenium.webdriver.common.by import By
-
 from base_web_driver import BaseWebDriver
 
 
@@ -38,8 +36,11 @@ class NavBar(BaseWebDriver):
             # Use By.CSS_SELECTOR to match a tag with a specific class
             logo_element = self.driver.find_element(By.CSS_SELECTOR, 'h1.logo-name')
             return logo_element.text  # Retrieve the text of the element
-        except Exception as e:
-            print(f"An error occurred while retrieving the logo text: {e}")
+        except NoSuchElementException as e:
+            print(f"Element not found: {e}")
+            return ""
+        except WebDriverException as e:
+            print(f"Webdriver error occurred: {e}")
             return ""
 
     def close(self):
