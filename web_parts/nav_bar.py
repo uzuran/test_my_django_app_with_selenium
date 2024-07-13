@@ -36,7 +36,7 @@ class NavBar(BaseWebDriver):
         """
         try:
             # Use By.CSS_SELECTOR to match a tag with a specific class
-            logo_element = self.driver.find_element(By.CSS_SELECTOR, 'h1.logo-name')  # Use CSS Selector
+            logo_element = self.driver.find_element(By.CSS_SELECTOR, 'h1.logo-name')
             return logo_element.text  # Retrieve the text of the element
         except Exception as e:
             print(f"An error occurred while retrieving the logo text: {e}")
