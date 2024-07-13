@@ -35,7 +35,3 @@ class BaseWebDriver:
         """
         if self.driver:
             self.driver.quit()
-
-
-
-
