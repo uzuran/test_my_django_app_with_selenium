@@ -8,7 +8,7 @@ from base_web_driver import BaseWebDriver
 
 class NavBar(BaseWebDriver):
     """
-    Class representing my main web page.
+    Class representing nav bar on my web page.
 
     Inherits from BaseWebDriver.
 
