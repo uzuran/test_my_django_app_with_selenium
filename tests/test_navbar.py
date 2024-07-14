@@ -15,6 +15,13 @@ class TestNavBar(unittest.TestCase):
         cls.driver_path = r'C:\drivers\chromedriver-win64\chromedriver.exe'
         cls.page = NavBar(cls.driver_path)
 
+    def test_get_home_url(self):
+        """Test if the get_home_url function retrieves the correct URL."""
+        expected_url = "https://uzuran.pythonanywhere.com/"
+        actual_url = self.page.get_home_url()
+        self.assertEqual(actual_url, expected_url,
+                         f"Expected home URL '{expected_url}' but got '{actual_url}'.")
+
     def test_get_title_text(self):
         """Test if the get_title_text function retrieves the correct text."""
         expected_title = "Černopaščenko"  # Adjust this to the expected text

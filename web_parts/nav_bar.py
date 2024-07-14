@@ -25,6 +25,10 @@ class NavBar(BaseWebDriver):
         self.start_driver()
         self.driver.get("http://uzuran.pythonanywhere.com/")
 
+    def get_home_url(self):
+        """:return: actual url."""
+        return self.driver.current_url
+
     def get_title_text(self):
         """
         :return: title from my webpage.
@@ -43,7 +47,7 @@ class NavBar(BaseWebDriver):
         """
         Retrieves and returns the logo text from the current navbar.
 
-        Returns:
+        :returns:
             str: The logo text if found, otherwise an empty string.
         """
         try:
@@ -60,7 +64,7 @@ class NavBar(BaseWebDriver):
         """
         Retrieves and returns the home text from the current navbar.
 
-        Returns:
+        :returns:
             str: The home text if found, otherwise an empty string.
         """
         try:
