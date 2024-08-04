@@ -33,7 +33,7 @@ class NavBar(BaseWebDriver):
             str: The logo text if found, otherwise an empty string.
         """
         try:
-            logo_element = self.driver.find_element(By.CSS_SELECTOR, 'h1.logo-name')
+            logo_element = self.driver.find_element(By.CSS_SELECTOR, "div.navbar > h1")
             return logo_element.text  # Retrieve the text of the element
         except NoSuchElementException as e:
             print(f"Element not found: {e}")
