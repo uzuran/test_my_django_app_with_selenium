@@ -128,3 +128,10 @@ cython_debug/
 # PyCharm
 .idea/
 
+*.pyc
+drivers/
+.venv
+screenshots/
+reports/
+
+
