@@ -1,3 +1,4 @@
+"""Script for create a screenshot and placed it in to the screenshot folder"""
 import os
 from datetime import datetime
 
@@ -16,4 +17,3 @@ def take_screenshot(driver, name="screenshot"):
     # Take the screenshot
     driver.save_screenshot(filepath)
     print(f"Screenshot saved: {filepath}")
-    

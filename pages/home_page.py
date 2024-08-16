@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 
 
 class HomePage(BasePage):
-
     def get_h1_text(self):
         """
         Get the text of the first <h1> element on the page.
