@@ -14,13 +14,13 @@ def driver():
     DRIVER.quit()
 
 
-def test_h1_check(driver):
+def test_h1_logo_text(driver):
     driver.get(BASE_URL)
     home_page = HomePage(driver)
 
     # Verify the h1 element's text
     try:
-        h1_text = home_page.get_h1_text()
+        h1_text = home_page.get_h1_logo_text()
         assert h1_text == "Černopaščenko", f"Unexpected H1 text: {h1_text}"
     except AssertionError as e:
         # Take a screenshot if the assertion fails

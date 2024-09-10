@@ -1,18 +1,17 @@
-"""Browser manager."""
+"""Base settings for browsers"""
+
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from utils.config import CHROME_DRIVER_PATH
-
-
-SERVICE = Service(executable_path=CHROME_DRIVER_PATH)
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def get_driver(browser="chrome"):
     """Get different drivers from CHROME_DRIVER_PATH."""
     if browser == "chrome":
-        driver = webdriver.Chrome(service=SERVICE)
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     elif browser == "firefox":
-        driver = webdriver.Firefox(service=SERVICE)
+        # Similar initialization for Firefox
+        pass
     else:
         raise ValueError(f"Unsupported browser: {browser}")
 

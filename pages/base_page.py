@@ -1,4 +1,4 @@
-from selenium.webdriver.common.by import By
+"""Base page settings."""
 from selenium.webdriver.support.ui import WebDriverWait
 
 
@@ -11,8 +11,3 @@ class BasePage:
     def find_element(self, locator):
         """Function for a find element."""
         return self.driver.find_element(*locator)
-
-    def get_h1_text(self):
-        """Get HTML <h1> in text form."""
-        h1_locator = (By.TAG_NAME, "h1")
-        return self.find_element(h1_locator).text
