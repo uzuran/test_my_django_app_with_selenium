@@ -133,4 +133,4 @@ drivers/
 .venv
 screenshots/
 reports/
-config.ini
+.config.ini
