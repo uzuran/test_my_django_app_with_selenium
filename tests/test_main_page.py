@@ -19,7 +19,7 @@ from utils.screenshot import take_screenshot
 from utils.db_queries import get_h1_strings_from_db
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="module")
 def driver():
     """Fixture to initialize and clean up the WebDriver instance."""
     driver_instance = get_driver(browser="chrome")
@@ -27,10 +27,15 @@ def driver():
     driver_instance.quit()
 
 
+def setup_page(driver):
+    """Helper function to navigate to the base URL and create a HomePage instance."""
+    driver.get(BASE_URL)
+    return HomePage(driver)
+
+
 def test_h1_logo_text(driver):
     """Test to verify the H1 logo text on the home page."""
-    driver.get(BASE_URL)
-    home_page = HomePage(driver)
+    home_page = setup_page(driver)
 
     # Retrieve expected H1 text from the database
     expected_h1_text = get_h1_strings_from_db()
