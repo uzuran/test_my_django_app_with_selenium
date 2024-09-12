@@ -47,8 +47,9 @@ def test_h1_logo_text(driver):
         pytest.fail("Failed to retrieve expected H1 text from the database.")
 
     try:
-        h1_text = home_page.get_h1_logo_text()
-        assert h1_text == expected_h1_text, f"Expected H1 text: '{expected_h1_text}', but got: '{h1_text}'"
+        h1_logo_text = home_page.get_h1_logo_text()
+        assert h1_logo_text == expected_h1_text, \
+            f"Expected H1 text: '{expected_h1_text}', but got: '{h1_logo_text}'"
     except AssertionError as e:
         take_screenshot(driver, "h1_check_failed.png")
         raise e
