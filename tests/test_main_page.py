@@ -42,7 +42,6 @@ def test_h1_logo_text(driver):
         h1_logo_text = home_page.get_h1_logo_text()
         assert h1_logo_text == expected_h1_text, \
             f"Expected H1 text: '{expected_h1_text}', but got: '{h1_logo_text}'"
-    except AssertionError as e:
+    except Exception as e:
         take_screenshot(driver, "h1_check_failed.png")
         raise e
-
