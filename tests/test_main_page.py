@@ -27,14 +27,6 @@ def driver():
     driver_instance.quit()
 
 
-@pytest.fixture(scope="function")
-def driver():
-    """Fixture to initialize and clean up the WebDriver instance."""
-    driver_instance = get_driver(browser="chrome")
-    yield driver_instance
-    driver_instance.quit()
-
-
 def test_h1_logo_text(driver):
     """Test to verify the H1 logo text on the home page."""
     driver.get(BASE_URL)
@@ -53,3 +45,4 @@ def test_h1_logo_text(driver):
     except AssertionError as e:
         take_screenshot(driver, "h1_check_failed.png")
         raise e
+
