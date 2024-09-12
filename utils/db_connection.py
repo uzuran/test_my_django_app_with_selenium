@@ -1,6 +1,6 @@
-import mysql.connector
-
+"""Database connection"""
 import configparser
+import mysql.connector
 
 # Create a parser object
 config = configparser.ConfigParser()
@@ -16,10 +16,8 @@ db_config = {
     'database': config['mysql']['database']
 }
 
-# Now you can use the config data for database connection
-
 
 def get_db_connection():
-    # Directly specify your database connection parameters here
+    """Return: connection for MySql"""
     connection = mysql.connector.connect(**db_config)
     return connection
