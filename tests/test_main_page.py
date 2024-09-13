@@ -12,41 +12,42 @@ Imports:
 """
 
 import pytest
-from utils.browser_manager import get_driver
-from pages.home_page import HomePage
-from utils.config import BASE_URL
 from utils.screenshot import take_screenshot
 from utils.db_queries import get_h1_strings_from_db
+from tests.test_settings import TestSettings
 
 
-@pytest.fixture(scope="module")
-def driver():
-    """Fixture to initialize and clean up the WebDriver instance."""
-    driver_instance = get_driver(browser="chrome")
-    yield driver_instance
-    driver_instance.quit()
+class TestMainPage(TestSettings):
+    """Test class containing test cases for the home page."""
 
+    def test_h1_logo_text(self, driver):
+        """Test to verify the H1 logo text on the home page."""
+        home_page = self.navigate_to_home_page(driver)
 
-def setup_page(driver):
-    """Helper function to navigate to the base URL and create a HomePage instance."""
-    driver.get(BASE_URL)
-    return HomePage(driver)
+        # Retrieve expected H1 text from the database
+        expected_h1_text = get_h1_strings_from_db()
 
+        if expected_h1_text is None:
+            pytest.fail("Failed to retrieve expected H1 text from the database.")
 
-def test_h1_logo_text(driver):
-    """Test to verify the H1 logo text on the home page."""
-    home_page = setup_page(driver)
+        try:
+            h1_logo_text = home_page.get_h1_logo_text()
+            assert h1_logo_text == expected_h1_text, \
+                f"Expected H1 text: '{expected_h1_text}', but got: '{h1_logo_text}'"
+        except Exception as e:
+            take_screenshot(driver, "h1_check_failed.png")
+            raise e
 
-    # Retrieve expected H1 text from the database
-    expected_h1_text = get_h1_strings_from_db()
+    def test_count_of_h1_elements(self, driver):
+        """Test to verify the count of H1 elements on the home page."""
+        home_page = self.navigate_to_home_page(driver)
 
-    if expected_h1_text is None:
-        pytest.fail("Failed to retrieve expected H1 text from the database.")
+        try:
+            h1_count = home_page.count_of_h1_elements()
+            # Assert that the count is less than 6
+            assert h1_count < 6, \
+                f"Expected fewer than 6 <h1> elements, but found {h1_count}"
 
-    try:
-        h1_logo_text = home_page.get_h1_logo_text()
-        assert h1_logo_text == expected_h1_text, \
-            f"Expected H1 text: '{expected_h1_text}', but got: '{h1_logo_text}'"
-    except Exception as e:
-        take_screenshot(driver, "h1_check_failed.png")
-        raise e
+        except Exception as e:
+            take_screenshot(driver, "h1_count_check_failed.png")
+            raise e
