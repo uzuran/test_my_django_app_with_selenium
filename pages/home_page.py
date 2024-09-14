@@ -31,3 +31,15 @@ class HomePage(BasePage):
         """
         h1_locator = (By.CSS_SELECTOR, "div.navbar h1")
         return self.find_element(h1_locator).text
+
+    def get_nav_element_home(self):
+        """
+        Retrieve the text of the H1 logo element within the navbar.
+
+        Finds the H1 element inside a div with the class 'navbar' and returns its text.
+
+        Returns:
+            str: The text content of the H1 element located inside the navbar div.
+        """
+        nav_element_home = (By.XPATH, "//a[@class='menu__item' and text()='Home']")
+        return self.find_element(nav_element_home).text

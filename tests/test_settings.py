@@ -1,4 +1,4 @@
-# settings.py
+"""Settings for tests."""
 import pytest
 from utils.browser_manager import get_driver
 from utils.config import BASE_URL
@@ -8,7 +8,7 @@ from pages.home_page import HomePage
 class TestSettings:
     """Class for WebDriver setup and utilities."""
 
-    @pytest.fixture(scope="class", autouse=True)
+    @pytest.fixture(scope="module", autouse=True)
     def driver(self):
         """Fixture to initialize and clean up the WebDriver instance."""
         driver_instance = get_driver(browser="chrome")

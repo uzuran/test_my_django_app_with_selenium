@@ -19,6 +19,19 @@ from tests.test_settings import TestSettings
 
 class TestMainPage(TestSettings):
     """Test class containing test cases for the home page."""
+    def test_count_of_h1_elements(self, driver):
+        """Test to verify the count of H1 elements on the home page."""
+        home_page = self.navigate_to_home_page(driver)
+
+        try:
+            h1_count = home_page.count_of_h1_elements()
+            # Assert that the count is less than 2
+            assert h1_count < 2, \
+                f"Expected fewer than 6 <h1> elements, but found {h1_count}"
+
+        except Exception as e:
+            take_screenshot(driver, "h1_count_check_failed.png")
+            raise e
 
     def test_h1_logo_text(self, driver):
         """Test to verify the H1 logo text on the home page."""
@@ -37,17 +50,4 @@ class TestMainPage(TestSettings):
         except Exception as e:
             take_screenshot(driver, "h1_check_failed.png")
             raise e
-
-    def test_count_of_h1_elements(self, driver):
-        """Test to verify the count of H1 elements on the home page."""
-        home_page = self.navigate_to_home_page(driver)
-
-        try:
-            h1_count = home_page.count_of_h1_elements()
-            # Assert that the count is less than 6
-            assert h1_count < 6, \
-                f"Expected fewer than 6 <h1> elements, but found {h1_count}"
-
-        except Exception as e:
-            take_screenshot(driver, "h1_count_check_failed.png")
-            raise e
+        

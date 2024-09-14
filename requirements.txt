@@ -2,3 +2,5 @@ selenium==4.8.0
 pytest==7.0.1
 python-dotenv==0.19.2
 mysql-connector-python
+beautifulsoup4
+lxml
