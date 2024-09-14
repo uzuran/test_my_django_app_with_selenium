@@ -13,7 +13,6 @@ Imports:
 
 import pytest
 from utils.screenshot import take_screenshot
-from utils.db_queries import get_h1_strings_from_db
 from tests.test_settings import TestSettings
 
 
@@ -33,12 +32,12 @@ class TestMainPage(TestSettings):
             take_screenshot(driver, "h1_count_check_failed.png")
             raise e
 
-    def test_h1_logo_text(self, driver):
+    def test_h1_logo_text(self, driver, db_queries):
         """Test to verify the H1 logo text on the home page."""
         home_page = self.navigate_to_home_page(driver)
 
         # Retrieve expected H1 text from the database
-        expected_h1_text = get_h1_strings_from_db()
+        expected_h1_text = db_queries.get_h1_strings()
 
         if expected_h1_text is None:
             pytest.fail("Failed to retrieve expected H1 text from the database.")

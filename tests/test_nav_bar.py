@@ -1,17 +1,16 @@
 import pytest
 from utils.screenshot import take_screenshot
 from tests.test_settings import TestSettings
-from utils.db_queries import get_nav_element_home_form_db
 
 
 class TestNavBar(TestSettings):
     """Test class containing test cases for the navbar."""
-    def test_navbar_element_home(self, driver):
+    def test_navbar_element_home(self, driver, db_queries):
         """Test to verify the H1 logo text on the home page."""
         home_page = self.navigate_to_home_page(driver)
 
         # Retrieve expected H1 text from the database
-        expected_nav_element_home = get_nav_element_home_form_db()
+        expected_nav_element_home = db_queries.get_nav_element()
 
         if expected_nav_element_home is None:
             pytest.fail("Failed to retrieve expected H1 text from the database.")
