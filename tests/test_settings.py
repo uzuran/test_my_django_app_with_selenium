@@ -2,9 +2,8 @@
 import pytest
 from utils.browser_manager import get_driver
 from utils.config import BASE_URL
+from utils.db_queries import DbQueries  # Grouped with other imports from 'utils'
 from pages.home_page import HomePage
-
-from utils.db_queries import DbQueries
 
 
 class TestSettings:
