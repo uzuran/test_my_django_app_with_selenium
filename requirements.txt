@@ -4,3 +4,4 @@ python-dotenv==0.19.2
 mysql-connector-python
 beautifulsoup4
 lxml
+webdriver_manager
