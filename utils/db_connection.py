@@ -4,7 +4,7 @@ import mysql.connector
 
 
 class DbConnection:
-    def __init__(self, config_path='../config.ini'):
+    def __init__(self, config_path='config.ini'):
         self.config = self._load_config(config_path)
         self.connection = None
 

@@ -43,3 +43,7 @@ class HomePage(BasePage):
         """
         nav_element_home = (By.XPATH, "//a[@class='menu__item' and text()='Home']")
         return self.find_element(nav_element_home).text
+
+    def click_on_home_link(self):
+        home_link = self.find_element(By.LINK_TEXT, "Home")
+        return home_link.click()

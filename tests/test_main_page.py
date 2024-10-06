@@ -37,7 +37,7 @@ class TestMainPage(TestSettings):
         home_page = self.navigate_to_home_page(driver)
 
         # Retrieve expected H1 text from the database
-        expected_h1_text = db_queries.get_h1_strings()
+        expected_h1_text = db_queries.get_h1_string_from_database()
 
         if expected_h1_text is None:
             pytest.fail("Failed to retrieve expected H1 text from the database.")
