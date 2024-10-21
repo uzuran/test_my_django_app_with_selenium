@@ -1,9 +1,8 @@
 import pytest
-from utils.screenshot import take_screenshot
-from tests.test_settings import TestSettings
+from utils.selenium_helper import SeleniumHelper
 
 
-class TestNavBar(TestSettings):
+class TestNavBar(SeleniumHelper):
     """Test class containing test cases for the navbar."""
     def test_navbar_element_home(self, driver, db_queries):
         """Test to verify the H1 logo text on the home page."""
@@ -20,5 +19,5 @@ class TestNavBar(TestSettings):
             assert nav_element_home == expected_nav_element_home, \
                 f"Expected H1 text: '{expected_nav_element_home}', but got: '{nav_element_home}'"
         except Exception as e:
-            take_screenshot(driver, "nav_element_home_failed.png")
+            self.take_screenshot(driver, "test_navbar_element_home_failed", "screenshots")
             raise e

@@ -12,11 +12,9 @@ Imports:
 """
 
 import pytest
-from utils.screenshot import take_screenshot
-from tests.test_settings import TestSettings
+from utils.selenium_helper import SeleniumHelper
 
-
-class TestMainPage(TestSettings):
+class TestMainPage(SeleniumHelper):
     """Test class containing test cases for the home page."""
     def test_count_of_h1_elements(self, driver):
         """Test to verify the count of H1 elements on the home page."""
@@ -27,9 +25,8 @@ class TestMainPage(TestSettings):
             # Assert that the count is less than 2
             assert h1_count < 2, \
                 f"Expected fewer than 6 <h1> elements, but found {h1_count}"
-
         except Exception as e:
-            take_screenshot(driver, "h1_count_check_failed.png")
+            self.take_screenshot(driver, "test_count_of_h1_failed", "screenshots")
             raise e
 
     def test_h1_logo_text(self, driver, db_queries):
@@ -47,6 +44,6 @@ class TestMainPage(TestSettings):
             assert h1_logo_text == expected_h1_text, \
                 f"Expected H1 text: '{expected_h1_text}', but got: '{h1_logo_text}'"
         except Exception as e:
-            take_screenshot(driver, "h1_check_failed.png")
+            self.take_screenshot(driver, "test_h1_logo_filed", "screenshots")
             raise e
         
