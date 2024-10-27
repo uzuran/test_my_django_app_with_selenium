@@ -2,7 +2,7 @@ import sys
 from behave.__main__ import main as behave_main
 
 
-def run_behave_tests():
+def runner():
     # Default options
     options = ["features/", "--tags=@smoke", "--format=pretty", "--no-capture"]
 
@@ -11,4 +11,4 @@ def run_behave_tests():
 
 
 if __name__ == "__main__":
-    run_behave_tests()
+    runner()

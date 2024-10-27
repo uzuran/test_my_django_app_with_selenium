@@ -6,3 +6,6 @@ beautifulsoup4
 lxml
 webdriver_manager
 behave
+pytest-html
+allure-behave
+allure-pytest
