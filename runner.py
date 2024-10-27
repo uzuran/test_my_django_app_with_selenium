@@ -3,13 +3,10 @@ from behave.__main__ import main as behave_main
 
 
 def run_behave_tests():
-    if len(sys.argv) > 1:
-        # Pass command-line options, including tags
-        options = sys.argv[1:]
-    else:
-        # Default options
-        options = ["features/", "--tags", "@smoke", "--format", "pretty", "--no-capture"]
+    # Default options
+    options = ["features/", "--tags=@smoke", "--format=pretty", "--no-capture"]
 
+    # Run Behave
     behave_main(options)
 
 
